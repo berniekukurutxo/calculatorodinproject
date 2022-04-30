@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <title>Calculator</title>
+</head>
+<style>
+
+  :root {
+    --primary-light: rgb(230, 230, 230);
+    --secondary-light: rgb(200, 200, 200);
+    --primary-dark: rgb(211, 224, 236);
+    --secondary-dark: rgb(80, 80, 80);
+    --background: rgba(69, 150, 187, 0.733);
+    --green: rgb(175, 223, 193);
+    --blue: rgb(153, 184, 229);
+  }
+
+  *, *::before, *::after {
+    box-sizing: boder-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  * {
+    font-family: oswald;
+  }
+
+  body {
+    background-color: var(--background);
+    font-weight: 300;
+    font-size: 20px;
+  }
+
+  button {
+    font-weight: 400;
+    font-size: 16px;
+    background-color: var(--secondary-light);
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin: 0.5em;
+    border-radius: 50%;
+    box-shadow: 2px 3px 3px 0 rgba(34, 33, 81, 0.25);
+    transition: all 0.15s ease-in-out;
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+  }
+
+  .grey:hover {
+    background-color: rgb(175, 175, 175);
+  }
+
+  .blue:hover {
+    background-color: rgb(122, 150, 192);
+  }
+
+  .green:hover {
+    background-color: rgb(129, 194, 154);
+  }
+
+  button:active {
+    transform: translateY(1px);
+    border-radius: 15px;
+  }
+
+  .allclear {
+    background-color: var(--green);
+  }
+
+  .operator,
+  .inverse,
+  .equals {
+    background-color: var(--blue);
+  }
+
+  .calc-body {
+    background-color: var(--primary-light);
+    width: 300px;
+    border-radius: 32px;
+    margin: 9em auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 32px;
+    box-shadow: 7px 7px 3px rgba(0, 10, 60, 0.25);
+  }
+
+  .display {
+    background-color: var(--primary-dark);
+    text-align: right;
+    width: 80%;
+    height: 75px;
+    border-radius: 10px;
+    margin: 1em auto;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 2px 3px 5px 0 rgba(34, 33, 81, 0.25);
+  }
+
+  .input,
+  .output {
+    margin: 0 0.5em;
+  }
+
+  .button-grid {
+    margin: 0.5em auto;
+    padding-bottom: 1.5em;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 0.1em;
+  }
+
+  @font-face {
+    font-family: "leaner-thin";
+    src: url(../calculator/font/leaner-thin.ttf);
+  }
+</style>
+<body>
+  <div class="calc-body">
+    <div class="display">
+      <output class="input" id="input"></output>
+      <output class="output" id="output"></output>
+    </div>
+
+    <div class="button-grid">
+      <button class="allclear green" id="allclear">AC</button>
+      <button class="inverse blue disabled" id="inverse">+/-</button>
+      <button class="operator blue disabled" id="modulo" data-key="%">MOD</button>
+      <button class="operator blue disabled" id="divide" data-key=&#247>&#247</button>
+
+      <button class="number grey disabled" id="num7">7</button>
+      <button class="number grey disabled" id="num8">8</button>
+      <button class="number grey disabled" id="num9">9</button>
+      <button class="operator blue disabled" id="multiply" data-key="x">x</button>
+
+      <button class="number grey disabled" id="num4">4</button>
+      <button class="number grey disabled" id="num5">5</button>
+      <button class="number grey disabled" id="num6">6</button>
+      <button class="operator blue disabled" id="subtract" data-key="-">-</button>
+
+      <button class="number grey disabled" id="num1">1</button>
+      <button class="number grey disabled" id="num2">2</button>
+      <button class="number grey disabled" id="num3">3</button>
+      <button class="operator blue disabled" id="add" data-key="+">+</button>
+
+      <button class="backspace grey" id="backspace"><<</button>
+      <button class="number grey disabled" id="num0">0</button>
+      <button class="decimal grey disabled" id="decimal">.</button>
+      <button class="equals blue" id="equals">=</button>
+    </div>
+  </div>
+</body>
+
+</html>
